@@ -9,8 +9,11 @@ pygame.display.set_caption("Space Invaders")
 
 image = pygame.image.load("title.png")
 image = pygame.transform.scale(image, (540,360))
+image1 = pygame.image.load("start_bouton.png")
+
 
 fenetre.blit(image, ((250, 50)))
+fenetre.blit(image1, ((340, 500)))
 pygame.display.update()
 
 Launched = True
