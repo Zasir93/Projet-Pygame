@@ -15,7 +15,7 @@ class Meteor:
         self.show_able = True # pour montre la météorite
         self.range = range #Leur position
 
-    def show(self, window):         #
+    def show(self, window):         #montre le meteor
         if self.show_able:
             window.blit(self.image, self.pos)
     
@@ -25,7 +25,7 @@ class Meteor:
         self._health = self._max_health
         self.show_able = True
 
-    def update(self):                   #
+    def update(self):                   # change place du meteor
         if self.pos.y <= setting.window_size[1]+20:
             self.pos.y += self.speed
         else:
