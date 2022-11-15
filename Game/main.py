@@ -49,26 +49,32 @@ while started:
         if event.type == pygame.QUIT:
             print("Fin du programme...")
             started = False
-        
+
+
+        if event.type == pygame.KEYDOWN:
+            if setting.screen == 0:
+                if event.key == pygame.K_RETURN:
+                    setting.screen = 1
+
         if event.type == pygame.MOUSEBUTTONDOWN and setting.screen == 0:
             if home.isPlayButtonClick():
                 timer.restart()
                 setting.screen = 1
             if home.isShopButtonClick():
                 setting.screen = 2
-        
+
         if event.type == pygame.MOUSEBUTTONDOWN and setting.screen == 2:
             home.shopManager.checkChoice()
 
             if home.shopManager.isCrossButtonClick():
                 print("back")
                 setting.screen = 0
-            
+
             if home.shopManager.isChooseButtonClick():
                 spaceship.changeSpaceshipSkin(home.shopManager.getSpaceshipChoosen())
                 setting.screen = 0
 
-        
+
         if event.type == pygame.KEYDOWN and setting.screen == 1:
             if event.key == pygame.K_SPACE:
                 spaceship.shoot()
@@ -79,13 +85,13 @@ while started:
 
     if setting.screen == 0:
         home.showBackground(window)
-        home.showPlayButton(window) 
+        home.showPlayButton(window)
         home.showShopButton(window)
         home.showMoves(window)
         home.showSpace(window)
         home.showTitle(window)
-        
-        
+
+
     elif setting.screen == 1:
         # ===== affichage =============================================================
         bg.show(window)
@@ -106,7 +112,7 @@ while started:
             if spaceship.collision(meteor):
                 spaceship._health -= 1
                 meteor.show_able = False
-        
+
             if spaceship.collisionBullet(meteor):
                 spaceship.score += 1
                 meteor.set_damage(spaceship._damage_point)
@@ -147,6 +153,6 @@ while started:
 
 
     pygame.display.flip() # rafraichissement
-    clock.tick(setting.fps) # fps 
+    clock.tick(setting.fps) # fps
 
 pygame.quit()

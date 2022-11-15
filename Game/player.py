@@ -36,9 +36,9 @@ class Player():
         window.blit(self._health_Points_Image[self._health], self.pos_health_points)
 
     def show(self, window):
-        pygame.draw.rect(window, "red", self._pos, 1)
+        #pygame.draw.rect(window, (255,0,0), self._pos, 1)
         window.blit(self._image, self._pos)
-    
+
     def move(self, direction):
         vX = 0
         vY = 0
@@ -55,7 +55,7 @@ class Player():
             if (self._pos.y + (vY*self._speed) >= 0 and self._pos.y + (vY*self._speed)+100 <= setting.window_size[1]):
                 self._pos.x += (vX*self._speed)
                 self._pos.y += (vY*self._speed)
-        
+
     def collision(self, meteor):
         if meteor.show_able:
             return self._pos.colliderect(meteor.pos)
@@ -78,12 +78,12 @@ class Player():
                 lazer.pos.x = self._pos.x
                 lazer.pos.y = self._pos.y
                 break
-    
+
     def showLazers(self, window):
         for lazer in self.lazers:
             if lazer.show_able == True:
                 lazer.show(window)
-    
+
     def updateLazers(self):
         for lazer in self.lazers:
             if lazer.show_able == True:
@@ -99,11 +99,11 @@ class Player():
             self._shield_rect.y = self._pos.y - 40
             self._shield_rect.w = 180
             self._shield_rect.h = 180
-            
-            center = (self._pos.x+(self._pos.w/2), self._pos.y+(self._pos.h/2)) 
-            pygame.draw.circle(window, (0,255,255), center, (self._pos.w), 3)
+
+            center = (self._pos.x+50, self._pos.y+50)
+            pygame.draw.circle(window, (0,255,255), center, self._pos.w, 3)
             #pygame.draw.rect(window, "white", self._shield_rect, 2)
-    
+
     def collisionShield(self, meteor):
         if self._shield_showable and meteor.show_able:
             if self._shield_rect.colliderect(meteor.pos):
@@ -114,4 +114,3 @@ class Player():
         if self._shield <= 0:
             self._shield_showable = False
 
-    
