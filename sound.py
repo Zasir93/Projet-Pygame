@@ -1,11 +1,29 @@
 import pygame
 
-class Sound:
-    def __init__(self): 
-        self.music = pygame.mixer_music.load("SOUND/bgsound.mp3")
-        self.music_volume = pygame.mixer.music.set_volume(0.35)
-        self.music_play = pygame.mixer.music.play(loops=-1)
-        self.shoot_sound = pygame.mixer.Sound("SOUND/shootsound.wav")
-        self.dead_sound = pygame.mixer.Sound("SOUND/deadsound.wav")
-        self.sound_volume()
+pygame.init()
+
+class Sounds:
+    def __init__(self):
+        pass
+
+
+    def play(self):
+        pygame.mixer.music.load("SOUND/bg.mp3")
+        pygame.mixer.music.set_volume(100)
+        pygame.mixer.music.play(loops=1)
+
+
+    def shootSound(self):
+        pygame.mixer.music.load("SOUND/shootsound.mp3")
+        pygame.mixer.music.set_volume(100)
+        pygame.mixer.music.play(loops=1)
+
+
+    def deadSound(self):
+        pygame.mixer.music.load("SOUND/deadsound.mp3")
+        pygame.mixer.music.set_volume(100)
+        pygame.mixer.music.play(loops=1)
+
+
+
 
