@@ -1,0 +1,7 @@
+To do list : 
+
+- Régler le son lorsqu'on perd la partie.
+- Ajouter son background
+- Boss final
+- Barre de progression
+- Ecran Game Over
